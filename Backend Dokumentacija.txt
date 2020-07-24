@@ -90,7 +90,7 @@ ILI
 // svi brodovi koji pripadaju odredenoj osobi pritom mi izaberi da se prikaze ime, reg.broj i tip te sortiraj po tipu
 https://api.smart-marina.proficodev.com/boats?select=name,registration_number,type&sort=type&user=5f194b9b27d08414ac751c8b
 
-Posli cu dodat sto raznovrsnije podatke tako da mozete bolje testirati vase zadatke 
+Posli cu dodat sto raznovrsnije podatke tako da mozete bolje testirati vase zadatke. Kako bude potrebe po popravljat ovaj dokument.
 
 
 
