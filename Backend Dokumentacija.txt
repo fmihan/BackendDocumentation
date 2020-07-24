@@ -1,0 +1,114 @@
+Backend Dokumentacija
+
+Ako želite requestove raditi da vam odgovori budu uredno formatirani idite na sljedeći link:
+https://jsonformatter.curiousconcept.com/
+ 
+
+Unutar prostora za pisanje teksta ćete upisati sljedeću adresu npr:
+https://api.smart-marina.proficodev.com/reservations
+
+
+// RESERVATIONS //
+
+Kada se pogađa ruta za rezervacije u odgovoru će se dobiti:
+- informacije o rezervaciji
+- informacije o korisniku koji je napravio rezervaciju
+- informacije o brodu
+- informacije o vezu koji je rezerviran
+- koliko ih je koji zadovoljavaju postavljene filtere
+- Zbroj cijena svih rezervacija koje zadovoljavaju postavljene filtere
+
+// Ispod su primjeri tako da otprilike znate postaviti filtere
+
+// Ako želite provjeriti sve rezervacije:
+https://api.smart-marina.proficodev.com/reservations
+
+// sve rezervacije koje su upcoming
+https://api.smart-marina.proficodev.com/reservations?type=upcoming
+
+// sve rezervacije koje su napravljene na odredeni datum
+https://api.smart-marina.proficodev.com/reservations?created=2020-07-28
+
+// sve rezervacije koje su napravljenje izmedu dva datuma
+https://api.smart-marina.proficodev.com/reservations?created[gte]=2020-07-22&created[lte]=2020-07-30
+
+// sve rezervacije sortirane po type tj da prvo idu sve koje su cancelled, pa zatim completed itd.
+https://api.smart-marina.proficodev.com/reservations?sort=type
+
+// podaci o pojedinoj rezervaciji
+https://api.smart-marina.proficodev.com/reservations/:id
+:id = ObjectId kada ih dohvatite sve rezervacije
+
+lt = less than
+gt = greater than
+gte = greater than or equal
+lte - less than or equal
+
+
+// DOCKS //
+Kada se pogađa ruta za docks u odgovoru će se dobiti:
+- informacije o vezu
+- marini kojoj pripada
+- koliko ih ukupno ima koji zadovoljavaju uvjetima
+- koliko ih je slobodnih
+- koliko ih je zauzetih
+- stopa zauzeca
+
+Ako želite provjeriti sve vezove:
+https://api.smart-marina.proficodev.com/docks
+
+// svi vezovi koji su zauzeti (zanemariti occupiedCount i freeCount u slucajevima
+kada filtriramo po free)
+https://api.smart-marina.proficodev.com/docks?free=false
+
+// vezovi koji su type=small i position=horizontal i da su slobodni za rezervaciju I 
+// da nam se samo prikaze broj veza i cijena
+https://api.smart-marina.proficodev.com/docks?select=number,price&type=small&position=horizontal&free=true
+
+// podaci o pojedinom vezu
+https://api.smart-marina.proficodev.com/docks/:id
+:id = ObjectId kada ih dohvatite sve vezove
+
+
+// USER INFO //
+https://api.smart-marina.proficodev.com/users/5f194b9b27d08414ac751c8b
+
+
+
+// BOATS //
+
+Kada se pogađa ruta za docks u odgovoru će se dobiti:
+- informacije o brodu (name,type,registration number)
+- ID osobe kojoj pripada (posli cu dodati da se ispise ime i prezime te osobe kao sto je slucaj za rezervacije
+
+// dohvati sve brodove
+https://api.smart-marina.proficodev.com/boats
+
+// sve brodove koji pripadaju odredenoj osobi
+https://api.smart-marina.proficodev.com/boats?user=5f194b9b27d08414ac751c8b
+ILI
+// svi brodovi koji pripadaju odredenoj osobi pritom mi izaberi da se prikaze ime, reg.broj i tip te sortiraj po tipu
+https://api.smart-marina.proficodev.com/boats?select=name,registration_number,type&sort=type&user=5f194b9b27d08414ac751c8b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
