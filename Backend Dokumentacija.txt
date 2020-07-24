@@ -77,7 +77,7 @@ https://api.smart-marina.proficodev.com/users/5f194b9b27d08414ac751c8b
 
 // BOATS //
 
-Kada se pogađa ruta za docks u odgovoru će se dobiti:
+Kada se pogađa ruta za boats u odgovoru će se dobiti:
 - informacije o brodu (name,type,registration number)
 - ID osobe kojoj pripada (posli cu dodati da se ispise ime i prezime te osobe kao sto je slucaj za rezervacije
 
@@ -89,6 +89,8 @@ https://api.smart-marina.proficodev.com/boats?user=5f194b9b27d08414ac751c8b
 ILI
 // svi brodovi koji pripadaju odredenoj osobi pritom mi izaberi da se prikaze ime, reg.broj i tip te sortiraj po tipu
 https://api.smart-marina.proficodev.com/boats?select=name,registration_number,type&sort=type&user=5f194b9b27d08414ac751c8b
+
+Posli cu dodat sto raznovrsnije podatke tako da mozete bolje testirati vase zadatke 
 
 
 
