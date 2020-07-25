@@ -74,7 +74,7 @@ https://api.smart-marina.proficodev.com/docks/:id
 https://api.smart-marina.proficodev.com/users/5f194b9b27d08414ac751c8b
 
 // sve rezervacije koje pripadaju odredenoj osobi
-https://api.smart-marina.proficodev.com/reservations?user=5f194b9b27d08414ac751c8b
+https://api.smart-marina.proficodev.com/reservations?user=5d7a514b5d2c12c7449be040
 
 
 
@@ -88,10 +88,10 @@ Kada se pogađa ruta za boats u odgovoru će se dobiti:
 https://api.smart-marina.proficodev.com/boats
 
 // svi brodovi koji pripadaju odredenoj osobi
-https://api.smart-marina.proficodev.com/boats?user=5f194b9b27d08414ac751c8b
+https://api.smart-marina.proficodev.com/boats?user=5d7a514b5d2c12c7449be040
 ILI
 // svi brodovi koji pripadaju odredenoj osobi pritom mi izaberi da se prikaze ime, reg.broj i tip te sortiraj po tipu
-https://api.smart-marina.proficodev.com/boats?select=name,registration_number,type&sort=type&user=5f194b9b27d08414ac751c8b
+https://api.smart-marina.proficodev.com/boats?select=name,registration_number,type&sort=type&user=5d7a514b5d2c12c7449be040
 
 Posli cu dodat sto raznovrsnije podatke tako da mozete bolje testirati vase zadatke. Kako bude potrebe popravljat cu ovaj dokument.
 
