@@ -2,10 +2,209 @@ Backend Dokumentacija
 
 Ako želite requestove raditi da vam odgovori budu uredno formatirani idite na sljedeći link:
 https://jsonformatter.curiousconcept.com/
+
+______________________________________________________________________________________
+
+
+[SMINT-32]
+[Mobile App] As a User I'd like to be able to find and select a dock using my mobile app
+
+[SMINT-63]
+-Create backend endpoint for suggesting docks
+
+-Route GET https://api.smart-marina.proficodev.com/docks
+
+OBAVEZNO
+
+u req.body morate dodati startDate i endDate po kojima zelite da vam trazi slobodone
+vezove
+
+"startDate":"2020-01-07,
+"endDate":"2020-01-11"
+
+[SMINT-64]
+- Create backend enpoint for more info about docks
+
+-route GET https://api.smart-marina.proficodev.com/docks/:id
+:id predstavlja id veza o kojem vi zelite provjeriti detalje
+
+
+[SMINT-65]
+-Create backend endpoint dock availability on map
+
+-Route GET https://api.smart-marina.proficodev.com/docks
+
+OBAVEZNO
+
+u req.body morate dodati startDate i endDate po kojima zelite da vam trazi slobodone
+vezove
+
+"startDate":"2020-01-07,
+"endDate":"2020-01-11"
+
+- vi ce te dobiti u odgovoru sve slobodne dockove i onda iz njih morate dohvatitu long i
+lat te po tome ih upisati u tu interaktivnu mapu (svaki dock ima long i lat vec upisan)
+
+[SMINT-[33-36]] slicni ovome prethodnome
+
+______________________________________________________________________________________
+
+[SMINT-15]  [Mobile App] As a User I'd like to be able to book a dock using my mobile app
+
+[SMINT-37] [SMINT-38] 
+- payment proces, nista od backenda ovde
+
+[SMINT-39] [SMINT-40]
+- Implement Booking success screen on iOS
+-Stranica koje se korisniku zahvaljuje na rezervaciji mjesta u marini s podacima o registraciji
+broda za kojeg je napravljena rezervacija, broju veza, datumima i cijeni. Na dnu stranice se nalazi
+slika pripadajućeg veza. Klikom na ok korisnik s vraća na stranicu moj profil gdje može vidjeti 
+pregled svih rezervacija
+
+TRENUTNO:
+- napravite POST  https://api.smart-marina.proficodev.com/reservations sa potrebnim info:
+
+        "numberOfPassengers": 9,
+        "dateOfArrival": "2020-07-01",
+        "dateOfDeparture": "2020-07-10",
+        "type": "upcoming",
+        "created": "",
+        "user": "5d7a514b5d2c12c7449be040",
+        "dock": "5d725a4a7b292f5f8ceff750",
+        "boat": "5d7a514b5d2c12c7449be033",
+        
+- u odgovoru ce te dobit  "_id": "5f1f1d54b33d1b2ae8a9e0e5" (ovo je samo primjer, vama
+ce bit drugaciji)
+- uzmete taj id i napravite: 
+GET   https://api.smart-marina.proficodev.com/reservations/5f1f1d54b33d1b2ae8a9e0e5
+
+u odgovoru ce te dobiti sve potrebne informacije koje morate prikazati (naravno izvuci
+one koje vama trebaju)
  
 
-Unutar prostora za pisanje teksta ćete upisati sljedeću adresu npr:
-https://api.smart-marina.proficodev.com/reservations
+______________________________________________________________________________________
+
+[SMINT-66] [Mobile app] as a User I would like to be able to view My Profile with 
+personal informations
+
+
+
+[SMINT-69]  [SMINT-70]
+Implement my reservations screen on iOS/ANDROID
+
+https://api.smart-marina.proficodev.com/reservations/user=5d7a514b5d2c12c7449be040
+
+user=:id  // obicno bi dohvacalo id korisnika koji je logiran, ali posto nemamo login
+i tokene, ovaj id ce bit vodilja
+
+
+   
+[SMINT-75]
+-Create backend endpoint for more info about reservation
+-stranica sa vise informacija o rezervaciji koju smo pritisnuli
+
+-route  GET  https://api.smart-marina.proficodev.com/reservations/:id    
+// moram dodat rezervaciju, ali će vam tu umisto :id ići id rezervacije koju ste pritisnuli
+
+
+
+[SMINT-71] [SMINT-72]
+-KREIRANJE KORISNIKA
+-route: POST  https://api.smart-marina.proficodev.com/users
+-podaci koje koje req.body treba sadržavati:
+
+    "username":"admin",
+    "firstName":"Nate",
+    "lastName":"Smith",
+    "email":"matko2@gmail.com",
+    "password":"admin",
+    "repeatPassword":"admin"
+    
+
+-DOHVACANJE INFORMACIJA O KORISNIKU
+-route:   GET   https://api.smart-marina.proficodev.com/users/5d7a514b5d2c12c7449be040
+    
+
+-UREDIVANJE INFORMACIJA O KORISNIKU
+-route:   PUT   https://api.smart-marina.proficodev.com/users/5d7a514b5d2c12c7449be040
+-u req.body će te poslati atribut i vrijednost koju želite promijeniti:
+
+   "firstName":"Josip"
+   
+   
+[SMINT-73]  [SMINT-74]
+- Implement Marina info screen on Android
+- stranica sa osnovnim podacima o marini kao adresa, kontakt broj i email
+
+-route GET  https://api.smart-marina.proficodev.com/marinas
+
+- posto je samo jedna trenutno, ne treba nam id
+
+_______________________________________________________________________________
+
+[SMINT-57] [WEB] As a user I'd like to know more info about docks
+
+[SMINT-77] - In Progress
+[SMINT-80] - In progress
+
+_____________________________________________________________________________________
+
+[SMINT-58] [WEB]As a User I'd like to know more about "Prihod" on web dashboard
+
+[SMINT-78] -- Have questions
+
+[SMINT-79] -- Have questions
+
+
+___________________________________________________________________________________
+
+[SMINT-59] [WEB]As a User I'd like to know more about "Bookings" on web dashboard
+
+[SMINT-79] Implement Bookings page on dashboard
+
+HOW TO TEST:
+
+Po defaultu se korisniku otvaraju rezervacije od toga dana, uz opciju odabira željenog datuma za prikaz.
+Ako se filtrira po broju veza npr. treba sakriti sve ostale vezove osim traženih. Sortiranje po istim 
+parametrima je isto potrebno zbog funkcionalnosti…
+
+
+https://api.smart-marina.proficodev.com/reservations?created=2020-07-26
+// umisto ovog datuma ce te poslati danasnji DATUM, obavezno izbrisat 
+sate minute i sekunde kada budete slali request
+
+-- HAVE QUESTIONS
+
+   
+   
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // RESERVATIONS //
