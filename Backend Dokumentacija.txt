@@ -31,16 +31,7 @@ vezove
 
 [SMINT-65]
 -Create backend endpoint dock availability on map
-
--Route GET https://api.smart-marina.proficodev.com/docks
-
-OBAVEZNO
-
-u req.body morate dodati startDate i endDate po kojima zelite da vam trazi slobodone
-vezove
-
-"startDate":"2020-01-07,
-"endDate":"2020-01-11"
+-route GET https://api.smart-marina.proficodev.com/docks?startDate=2020-7-12&endDate=2020-7-14&type=Medium
 
 - vi ce te dobiti u odgovoru sve slobodne dockove i onda iz njih morate dohvatitu long i
 lat te po tome ih upisati u tu interaktivnu mapu (svaki dock ima long i lat vec upisan)
