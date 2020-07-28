@@ -145,6 +145,7 @@ _______________________________________________________________________________
 [SMINT-57] [WEB] As a user I'd like to know more info about docks
 
 [SMINT-77] - In Progress
+https://api.smart-marina.proficodev.com/docks?datesOfReservations[gte]=2020-07-07&datesOfReservations[lte]=2020-07-15
 [SMINT-80] - In progress
 
 _____________________________________________________________________________________
