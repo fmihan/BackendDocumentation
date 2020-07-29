@@ -12,21 +12,20 @@ ________________________________________________________________________________
 [SMINT-63]
 -Create backend endpoint for suggesting docks
 
--Route GET https://api.smart-marina.proficodev.com/docks
 
-OBAVEZNO
+-Route GET https://api.smart-marina.proficodev.com/docks?startDate=2020-07-14&endDate=2020-07-18&type=Big
 
-u req.body morate dodati startDate i endDate po kojima zelite da vam trazi slobodone
-vezove
+-response: u odgovoru ce te dobiti sve dockove koji su slobodni za odabrane datume i da im je type BIG
 
-"startDate":"2020-01-07,
-"endDate":"2020-01-11"
 
 [SMINT-64]
 - Create backend enpoint for more info about docks
 
--route GET https://api.smart-marina.proficodev.com/docks/:id
-:id predstavlja id veza o kojem vi zelite provjeriti detalje
+-route GET https://api.smart-marina.proficodev.com/docks/5d725a4a7b292f5f8ceff750
+5d725a4a7b292f5f8ceff750 - id docka
+id_dock = varijabla kojoj ce te vi dodijeliti vrijednost 
+
+vama ce bit https://api.smart-marina.proficodev.com/docks/{id_dock}
 
 
 [SMINT-65]
@@ -63,11 +62,13 @@ TRENUTNO:
         "user": "5d7a514b5d2c12c7449be040",
         "dock": "5d725a4a7b292f5f8ceff750",
         "boat": "5d7a514b5d2c12c7449be033",
-        
-- u odgovoru ce te dobit  "_id": "5f1f1d54b33d1b2ae8a9e0e5" (ovo je samo primjer, vama
-ce bit drugaciji)
-- uzmete taj id i napravite: 
-GET   https://api.smart-marina.proficodev.com/reservations/5f1f1d54b33d1b2ae8a9e0e5
+- u response ce te dobiti data od te rezervacije i iz odgovora dohvatite id rezervacije i napravite
+sljedeci request
+ 
+nesto ovako bi trebalo bit, trebate viditi sta vam je u odgovoru 
+id_rezervacije=res.data._id 
+
+GET   https://api.smart-marina.proficodev.com/reservations/{id_rezervacije}
 
 u odgovoru ce te dobiti sve potrebne informacije koje morate prikazati (naravno izvuci
 one koje vama trebaju)
@@ -95,14 +96,23 @@ i tokene, ovaj id ce bit vodilja
 -stranica sa vise informacija o rezervaciji koju smo pritisnuli
 
 -route  GET  https://api.smart-marina.proficodev.com/reservations/:id    
-// moram dodat rezervaciju, ali će vam tu umisto :id ići id rezervacije koju ste pritisnuli
+// moram dodat rezervaciju, ali će vam tu umisto :id ići id rezervacije koju ste pritisnuli,
+ovo ce vam ako ce te ici da pritiskom na rezervaciju vas vodi na novu stranicu i tamo su svi 
+detalji o rezervaciji
+
+ILI 
+
+-ako radite sa view more, onda ne trebate dohvacati posebnu rezervaciju, vec samo dobijete sve 
+rezervacije i onda prikazujete odredene detalje i pritiskom na view more se prikazuju jos neki
+detalji
 
 
 
 [SMINT-71] [SMINT-72]
--KREIRANJE KORISNIKA
--route: POST  https://api.smart-marina.proficodev.com/users
--podaci koje koje req.body treba sadržavati:
+{ neznam jel vam ovo potrebno
+    -KREIRANJE KORISNIKA
+        -route: POST  https://api.smart-marina.proficodev.com/users
+        -podaci koje koje req.body treba sadržavati:
 
     "username":"admin",
     "firstName":"Nate",
@@ -110,6 +120,8 @@ i tokene, ovaj id ce bit vodilja
     "email":"matko2@gmail.com",
     "password":"admin",
     "repeatPassword":"admin"
+}
+
     
 
 -DOHVACANJE INFORMACIJA O KORISNIKU
